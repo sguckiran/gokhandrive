@@ -4,11 +4,10 @@ import { motion } from "framer-motion";
 import { Mail, Phone, MapPin, Clock, Send } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
 import { Button } from "@/components/ui/button";
-import emailjs from "emailjs-com";
+import emailjs from "@emailjs/browser";
 
 // Initialize EmailJS with your actual public key
 emailjs.init("-M0s8sN0V_Eze0791");
-// TODO: Replace the placeholders below with your actual Service ID and Template ID from the EmailJS dashboard
 
 const Contact = () => {
     const { toast } = useToast();
