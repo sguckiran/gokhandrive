@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { CheckCircle, Award, BookOpen, Users } from 'lucide-react';
+import landingImage from '../assets/landingpage.webp';
 
 const Home = () => {
     const features = [
@@ -24,11 +25,11 @@ const Home = () => {
     ];
 
     const services = [
-        'Manual & refresher lessons',
+        'Automatic lessons',
         'Motorway tuition',
         'Mock driving tests',
+        'Early test dates',
         'Structured lesson plans',
-        'Pass Plus courses',
         'Intensive courses available',
     ];
 
@@ -84,8 +85,8 @@ const Home = () => {
                             <div className="relative z-10">
                                 <img
                                     className="rounded-2xl shadow-2xl w-full h-96 object-cover"
-                                    alt="driving instructor and learner driving, inside car, modern lighting, professional feel"
-                                    src="https://images.unsplash.com/photo-1570867613871-b3cc92b94065"
+                                    alt="GokhanDrive landing page photo"
+                                    src={landingImage}
                                 />
                             </div>
                             <div className="absolute -top-4 -right-4 w-full h-full bg-white/20 rounded-2xl"></div>

@@ -113,18 +113,19 @@ const About = () => {
             </section>
 
             {/* CTA Section */}
-            <section className="section-padding">
+            <section className="section-padding gradient-bg text-white">
                 <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
-                        className="space-y-6 bg-gray-50 p-8 rounded-2xl shadow-lg"
+                        className="space-y-6 p-8 rounded-2xl shadow-lg"
+                        style={{ background: 'linear-gradient(135deg, #1E3A8A 0%, #4F46E5 100%)' }}
                     >
-                        <h2 className="text-3xl md:text-4xl font-bold text-gray-800">
+                        <h2 className="text-3xl md:text-4xl font-bold text-white">
                             Ready to Pass with Confidence?
                         </h2>
-                        <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+                        <p className="text-xl text-blue-100 max-w-2xl mx-auto">
                             My structured teaching method is designed for your success. Let's get you on the road.
                         </p>
                         <Link to="/contact" className="btn-primary text-lg px-8 py-4">
