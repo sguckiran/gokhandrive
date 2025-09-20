@@ -44,12 +44,7 @@ const About = () => {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, delay: 0.4 }}
                         >
-                            <a
-                                href="#story"
-                                className="btn-primary text-lg px-8 py-4"
-                            >
-                                Learn More
-                            </a>
+
                         </motion.div>
                     </div>
                 </div>
