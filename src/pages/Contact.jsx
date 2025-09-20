@@ -1,79 +1,33 @@
-import React, { useState } from "react";
+import React from "react";
 import { Helmet } from "react-helmet";
 import { motion } from "framer-motion";
-import { Mail, Phone, MapPin, Clock, Send } from "lucide-react";
+import { Mail, Phone, MapPin, Clock } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
-import { Button } from "@/components/ui/button";
-import emailjs from "@emailjs/browser";
 
-// Initialize EmailJS with your actual public key
-emailjs.init("-M0s8sN0V_Eze0791");
+// Removed EmailJS and form handling imports
 
 const Contact = () => {
     const { toast } = useToast();
-    const [formData, setFormData] = useState({
-        name: "",
-        email: "",
-        phone: "",
-        message: "",
-    });
-    const [isSubmitting, setIsSubmitting] = useState(false);
-
-    const handleInputChange = (e) => {
-        const { name, value } = e.target;
-        setFormData((prev) => ({
-            ...prev,
-            [name]: value,
-        }));
-    };
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        setIsSubmitting(true);
-
-        try {
-            await emailjs.send(
-                "service_smdu7mr", // <-- Your actual EmailJS service ID
-                "template_eghdpgs", // <-- Your actual EmailJS template ID
-                {
-                    from_name: formData.name,
-                    from_email: formData.email,
-                    from_phone: formData.phone,
-                    message: formData.message,
-                    reply_to: formData.email,
-                    to_email: "gokhanguckiran@hotmail.com", // This will be used as the recipient in your EmailJS template
-                }
-            );
-
-            toast({
-                title: "Message Sent Successfully!",
-                description: "Thank you for your enquiry. I'll respond within 24 hours.",
-            });
-
-            setFormData({ name: "", email: "", phone: "", message: "" });
-        } catch (error) {
-            console.error("EmailJS Error:", error);
-            toast({
-                title: "Error Sending Message",
-                description: "Please try again later.",
-                variant: "destructive",
-            });
-        } finally {
-            setIsSubmitting(false);
-        }
-    };
 
     const contactInfo = [
         {
             icon: Phone,
             title: "Phone",
-            description: "+44 7799210141",
+            description: (
+                <a href="tel:+447799210141" className="text-blue-600 hover:underline">
+                    +44 7799210141
+                </a>
+            ),
             detail: "Call for immediate enquiries",
         },
         {
             icon: Mail,
             title: "Email",
-            description: "info@gokhandrive.co.uk",
+            description: (
+                <a href="mailto:info@gokhandrive.co.uk" className="text-blue-600 hover:underline">
+                    info@gokhandrive.co.uk
+                </a>
+            ),
             detail: "Response within 24 hours",
         },
         {
@@ -129,9 +83,7 @@ const Contact = () => {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, delay: 0.4 }}
                         >
-                            <a href="#contact-form" className="btn-primary text-lg px-8 py-4">
-                                Send Message
-                            </a>
+                            {/* Removed contact form link */}
                         </motion.div>
                     </div>
                 </div>
@@ -177,146 +129,7 @@ const Contact = () => {
                     </div>
                 </div>
             </section>
-
-            {/* Contact Form Section */}
-            <section id="contact-form" className="section-padding">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-                        <motion.div
-                            initial={{ opacity: 0, x: -50 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ duration: 0.8 }}
-                            className="space-y-6"
-                        >
-                            <h2 className="text-3xl md:text-4xl font-bold text-gray-800">
-                                Contact Form
-                            </h2>
-                            <p className="text-lg text-gray-600">
-                                Fill out the form and I will respond within 24 hours.
-                            </p>
-
-                            <div className="relative">
-                                <img
-                                    className="rounded-2xl shadow-xl w-full h-64 object-cover"
-                                    alt="hands writing email on laptop, clean desk"
-                                    src="https://images.unsplash.com/photo-1586314265219-192da32be7eb"
-                                />
-                            </div>
-
-                            <div className="bg-blue-50 p-6 rounded-xl">
-                                <h3 className="text-xl font-semibold text-gray-800 mb-4">
-                                    What to Include
-                                </h3>
-                                <ul className="space-y-2 text-gray-600">
-                                    <li>• Your current driving experience level</li>
-                                    <li>• Preferred lesson times and frequency</li>
-                                    <li>• Any specific areas you'd like to focus on</li>
-                                    <li>• Questions about rates or availability</li>
-                                </ul>
-                            </div>
-                        </motion.div>
-
-                        <motion.div
-                            initial={{ opacity: 0, x: 50 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ duration: 0.8, delay: 0.2 }}
-                            className="bg-white p-8 rounded-2xl shadow-xl"
-                        >
-                            <form onSubmit={handleSubmit} className="space-y-6">
-                                <div>
-                                    <label
-                                        htmlFor="name"
-                                        className="block text-sm font-medium text-gray-700 mb-2"
-                                    >
-                                        Name *
-                                    </label>
-                                    <input
-                                        type="text"
-                                        id="name"
-                                        name="name"
-                                        value={formData.name}
-                                        onChange={handleInputChange}
-                                        required
-                                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
-                                        placeholder="Your full name"
-                                    />
-                                </div>
-
-                                <div>
-                                    <label
-                                        htmlFor="email"
-                                        className="block text-sm font-medium text-gray-700 mb-2"
-                                    >
-                                        Email *
-                                    </label>
-                                    <input
-                                        type="email"
-                                        id="email"
-                                        name="email"
-                                        value={formData.email}
-                                        onChange={handleInputChange}
-                                        required
-                                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
-                                        placeholder="your.email@example.com"
-                                    />
-                                </div>
-
-                                <div>
-                                    <label
-                                        htmlFor="phone"
-                                        className="block text-sm font-medium text-gray-700 mb-2"
-                                    >
-                                        Phone (optional)
-                                    </label>
-                                    <input
-                                        type="tel"
-                                        id="phone"
-                                        name="phone"
-                                        value={formData.phone}
-                                        onChange={handleInputChange}
-                                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
-                                        placeholder="Your phone number"
-                                    />
-                                </div>
-
-                                <div>
-                                    <label
-                                        htmlFor="message"
-                                        className="block text-sm font-medium text-gray-700 mb-2"
-                                    >
-                                        Message *
-                                    </label>
-                                    <textarea
-                                        id="message"
-                                        name="message"
-                                        value={formData.message}
-                                        onChange={handleInputChange}
-                                        required
-                                        rows={5}
-                                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 resize-vertical"
-                                        placeholder="Tell me about your driving experience and what you're looking for..."
-                                    />
-                                </div>
-
-                                <Button
-                                    type="submit"
-                                    disabled={isSubmitting}
-                                    className="w-full bg-gradient-to-r from-blue-800 to-indigo-600 text-white hover:opacity-90 transition-opacity flex items-center justify-center space-x-2 py-3 h-auto text-base"
-                                >
-                                    {isSubmitting ? (
-                                        <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
-                                    ) : (
-                                        <>
-                                            <Send className="w-5 h-5" />
-                                            <span>Send Message</span>
-                                        </>
-                                    )}
-                                </Button>
-                            </form>
-                        </motion.div>
-                    </div>
-                </div>
-            </section>
+            {/* Removed Contact Form Section */}
         </>
     );
 };
