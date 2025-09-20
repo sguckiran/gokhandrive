@@ -45,6 +45,7 @@ const Home = () => {
                     name="keywords"
                     content="driving instructor, ADI instructor, learner driver UK, by the book driving lessons"
                 />
+                <link rel="icon" type="image/x-icon" href="/favicon-gokhan.ico" />
             </Helmet>
 
             {/* Hero Section */}
@@ -80,7 +81,7 @@ const Home = () => {
                             initial={{ opacity: 0, x: 50 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ duration: 0.8, delay: 0.2 }}
-                            className="relative"
+                            className="relative hidden md:block"
                         >
                             <div className="relative z-10">
                                 <img
