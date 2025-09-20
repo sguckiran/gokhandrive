@@ -19,7 +19,7 @@ const Home = () => {
         {
             icon: Users,
             title: 'Student Recommended',
-            description: 'Unique teaching style that students vouch for.',
+            description: 'Unique teaching style students vouch for.',
         },
     ];
 
