@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { CheckCircle, BookOpen, Users, Award } from 'lucide-react';
+import passImage from '../assets/pass-image.jpeg';
 
 const About = () => {
     return (
@@ -63,8 +64,8 @@ const About = () => {
                             <img
                                 className="rounded-2xl shadow-xl w-full h-full object-cover"
                                 style={{ minHeight: '450px' }}
-                                alt="professional portrait of instructor, clean background, car nearby"
-                                src="https://horizons-cdn.hostinger.com/16a889be-b95e-4aa9-ab10-6540bb69ca08/548744017_10163239812194116_1095121729930392809_n-qODhE.jpg"
+                                alt="GokhanDrive instructor portrait"
+                                src={passImage}
                             />
                         </motion.div>
 
