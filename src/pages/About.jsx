@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { CheckCircle, BookOpen, Users, Award } from 'lucide-react';
-import passImage from '../assets/pass-image.jpeg';
+import passImage from '../assets/pass-image.png';
 
 const About = () => {
     return (
