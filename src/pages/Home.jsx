@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { CheckCircle, Award, BookOpen, Users } from 'lucide-react';
 import landingImage from '../assets/landingpage.webp';
+import homepage2 from '../assets/homepage2.png';
 
 const Home = () => {
     const features = [
@@ -109,7 +110,7 @@ const Home = () => {
                             <img
                                 className="rounded-2xl shadow-xl w-full h-96 object-cover object-top"
                                 alt="professional portrait of instructor, clean background, car nearby"
-                                src="https://horizons-cdn.hostinger.com/16a889be-b95e-4aa9-ab10-6540bb69ca08/548744017_10163239812194116_1095121729930392809_n-qODhE.jpg"
+                                src={homepage2}
                             />
                         </motion.div>
 
